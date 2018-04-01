@@ -4,7 +4,6 @@ from time import sleep
 import sys
 import cloud4rpi
 import chip
-import ds18b20
 import wol
 
 DEVICE_TOKEN = '__MEMENTO_TOKEN__'
@@ -24,16 +23,7 @@ def ping_pc(value):
 
 
 def main():
-    # Enable a DS18B20 temperature sensor. Remove if you don't have it
-    ds18b20.init_w1()
-    ds_sensors = ds18b20.DS18b20.find_all()
-
-    # Put variable declarations here
     variables = {
-        'Outside Temp': {
-            'type': 'numeric',
-            'bind': ds_sensors[0] if ds_sensors else None
-        },
         'PC IP': {
             'type': 'string',
             'value': False,
